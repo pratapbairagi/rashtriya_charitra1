@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <script src="/socket.io/socket.io.js"></script>
+        <script>
+        var socket = io();
+
+        
+      
+
+        function submit_name(){
+            alert("hello")
+            
+            console.log(socket)
+                
+            const name = document.getElementById("input_name").value
+            socket.emit("name_register", {name_:name,id_:socket.id})
+
+        }
+
+        const u_names = [{
+            names:""
+        }]
+
+        socket.on("entered_name", (data)=>{
+           u_names.concat({names:data.u_name})
+            console.log(data)
+             console.log(u_names)
+            
+            var user_div = document.createElement("div")
+            var text= document.createTextNode(`${data.u_name}`)
+            user_div.appendChild(text)
+            document.getElementById("users").appendChild(user_div)
+        })
+
+        console.log(u_names)
+
+        // var user_div = document.createElement("div")
+        // document.createTextNode("")
+
+        
+        
+    </script>
+    <head>
+        <title></title>
+    </head>
+    <body>
+      <div id="users">
+
+      </div>
+        <h1>Hello</h1>
+        <input type="text" defaultValue="" id="input_name" />
+        <button onclick="submit_name()">submit</button>
+    </body>
+    
+</html>
