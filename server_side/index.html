@@ -3,9 +3,7 @@
     <script src="/socket.io/socket.io.js"></script>
         <script>
         var socket = io();
-
-        
-      
+        const state=[]
 
         function submit_name(){
             alert("hello")
@@ -14,26 +12,25 @@
                 
             const name = document.getElementById("input_name").value
             socket.emit("name_register", {name_:name,id_:socket.id})
-
         }
 
-        const u_names = [{
-            names:""
-        }]
+      
 
         socket.on("entered_name", (data)=>{
-           u_names.concat({names:data.u_name})
+        //    u_names.concat({names:data.u_name})
             console.log(data)
-             console.log(u_names)
+            //  console.log(u_names)
+             state.push({name:data.u_name, id:data.id})
+             console.log(state)
+             val = state.map((val,i)=>{val.name})
             
             var user_div = document.createElement("div")
             var text= document.createTextNode(`${data.u_name}`)
             user_div.appendChild(text)
             document.getElementById("users").appendChild(user_div)
         })
-
-        console.log(u_names)
-
+        
+        console.log(state)
         // var user_div = document.createElement("div")
         // document.createTextNode("")
 
@@ -47,8 +44,11 @@
       <div id="users">
 
       </div>
+        
         <h1>Hello</h1>
+        <label>
         <input type="text" defaultValue="" id="input_name" />
+         </label>
         <button onclick="submit_name()">submit</button>
     </body>
     

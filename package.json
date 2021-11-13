@@ -1,0 +1,24 @@
+{
+    "name": "ignores",
+    "version": "1.0.0",
+    "description": "non extension file create manually",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "test0": "echo \"Choose input via console ;-)"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "cores": "^0.8.5",
+        "create-next-app": "^12.0.2",
+        "create-react-app": "^4.0.3",
+        "express": "^4.17.1",
+        "nodemon": "^2.0.15",
+        "socket.io": "^4.3.2"
+    },
+    "devDependencies": {
+        "redux-devtools": "^3.7.0"
+    }
+}
